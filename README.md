@@ -94,7 +94,7 @@ container与host默认的端口映射
     
     [http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123](http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123)
     
-    非本机访问，替换localhost为目标ip
+    非本机访问，替换localhost为目标ip,替换密码
     
 2. VNC软件，推荐TigerVNC
     
