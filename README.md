@@ -59,7 +59,7 @@ docker_containers
 
 ```bash
 cd /home/$USER/docker_containers/Project-1
-curl -s -O https://github.com/Maxwell-lx/docker-desktop-pytorch/blob/main/x11vnc_desktop.py
+curl -s -O https://raw.githubusercontent.com/Maxwell-lx/docker-desktop-pytorch/main/x11vnc_desktop.py
 python x11vnc_desktop.py -o maxwelllx -i /docker-desktop-pytorch -v /home/$USER/docker-containers/common -V -p
 ```
 
