@@ -49,7 +49,7 @@ docker_containers
 ...
 ```
 
-1. 运行。注意，使用此脚本创建多个container，必须保持其他的container为开启状态，否则端口将会被占用
+2. 运行。注意，使用此脚本创建多个container，必须保持其他的container为开启状态，否则端口将会被占用
 
 ```bash
 cd /home/$USER/docker_containers/Project-1
