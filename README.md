@@ -3,6 +3,12 @@
 
 基于项目[x11vnc/docker-desktop](https://hub.docker.com/r/x11vnc/docker-desktop/tags)
 
+# 要求
+
+- docker
+- nvidia-docker2
+- 宿主机已安装显卡驱动
+
 # 改动
 
 ### 修改调用显卡方法
