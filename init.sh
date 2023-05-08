@@ -83,5 +83,5 @@ sudo mv nautilus.png /usr/share/icons/hicolor/48x48/apps/nautilus.png
 
 # delete readme?xvnc11_desktop.py?init.sh
 rm -f README.md
-rm -f xvnc11_desktop.py
+rm -f x11vnc_desktop.py
 rm -f init.sh
