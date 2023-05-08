@@ -48,8 +48,8 @@ sudo apt-get install -y gedit > /dev/null
 
 echo "Updating apt-get..."
 sudo apt-get update > /dev/null
-echo "Installing Nautilus..."
-sudo apt-get install -y Nautilus > /dev/null
+echo "Installing nautilus..."
+sudo apt-get install -y nautilus > /dev/null
 echo "Installing cmake..."
 sudo apt-get install -y cmake > /dev/null
 echo "Installing wget..."
