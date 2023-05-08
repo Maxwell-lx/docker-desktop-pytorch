@@ -27,7 +27,7 @@ docker_containers
 ...
 ```
 
-1. 创建container。注意，使用此脚本创建多个container，如果多个container共存，必须保持要共存的container为开启状态，否则端口将会被占用
+2. 创建container。注意，使用此脚本创建多个container，如果多个container共存，必须保持要共存的container为开启状态，否则端口将会被占用
     
     修改PROJECT_NAME="project-1"
     
@@ -40,7 +40,7 @@ cd "$PROJECT_NAME"
 python3 x11vnc_desktop.py -v "/home/$USER/docker-containers/common" -V -p
 ```
 
-1. 一键配置环境。在打开的默认终端中
+3. 一键配置环境。在打开的默认终端中
 
 ```bash
 bash
