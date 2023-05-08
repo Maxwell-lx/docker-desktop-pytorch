@@ -16,7 +16,7 @@
     
 
 ```bash
-docker_containers
+docker-containers
 |---common
 |---Project-1
    |---x11vnc_desktop.py
@@ -34,7 +34,7 @@ docker_containers
 
 ```bash
 cd ~
-cd docker_containers
+cd docker-containers
 PROJECT_NAME="project-1"
 git clone https://github.com/Maxwell-lx/docker-desktop-pytorch.git "$PROJECT_NAME"
 cd "$PROJECT_NAME"
