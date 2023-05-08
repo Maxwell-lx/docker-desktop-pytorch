@@ -44,7 +44,7 @@ sudo apt-get install -y gnome-terminal
 sudo apt-get install -y gedit
 
 sudo apt-get update
-sudo apt-get install -y Nautilus
+sudo apt-get install -y nautilus
 sudo apt-get install -y cmake
 sudo apt-get install -y wget 
 
