@@ -39,14 +39,21 @@ echo "PYTHON: $PYTHON"
 echo "TORCH: $TORCH"
 
 # install gnome-terminal?gedit?Nautilus?cmake?wget 
-sudo apt-get update
-sudo apt-get install -y gnome-terminal 
-sudo apt-get install -y gedit
+echo "Updating apt-get..."
+sudo apt-get update > /dev/null
+echo "Installing gnome-terminal..."
+sudo apt-get install -y gnome-terminal > /dev/null
+echo "Installing gedit..."
+sudo apt-get install -y gedit > /dev/null
 
-sudo apt-get update
-sudo apt-get install -y nautilus
-sudo apt-get install -y cmake
-sudo apt-get install -y wget 
+echo "Updating apt-get..."
+sudo apt-get update > /dev/null
+echo "Installing Nautilus..."
+sudo apt-get install -y Nautilus > /dev/null
+echo "Installing cmake..."
+sudo apt-get install -y cmake > /dev/null
+echo "Installing wget..."
+sudo apt-get install -y wget > /dev/null
 
 # delete shared
 rm -rf /home/ubuntu/shared
