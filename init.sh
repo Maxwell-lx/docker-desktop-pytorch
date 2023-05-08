@@ -92,4 +92,3 @@ sudo mv nautilus.png /usr/share/icons/hicolor/48x48/apps/nautilus.png
 rm -f README.md
 rm -f x11vnc_desktop.py
 rm -f init.sh
-rm -f init_unix.sh
