@@ -33,7 +33,8 @@ docker_containers
     
 
 ```bash
-cd /home/$USER/docker_containers
+cd ~
+cd docker_containers
 PROJECT_NAME="project-1"
 git clone https://github.com/Maxwell-lx/docker-desktop-pytorch.git "$PROJECT_NAME"
 cd "$PROJECT_NAME"
