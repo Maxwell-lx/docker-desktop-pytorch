@@ -96,12 +96,12 @@ container与host默认的端口映射
 | 6080 | 6080 | noVNC |
 | 5950 | 5900 | VNC |
 | 2222 | 22 | SSH |
-1. noVNC
+1. noVNC（火狐浏览器访问存在问题）
     
     [http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123](http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123)
-    
-    
+   
     非本机访问，替换localhost为目标ip,替换密码
+    
     
 2. VNC软件，推荐TigerVNC
     
