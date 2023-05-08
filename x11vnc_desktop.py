@@ -19,7 +19,7 @@ default_name = os.path.basename(os.getcwd())
 image = "/docker-desktop"
 tag = "zh_CN"
 projdir = "common"
-workdir = "common"
+workdir = default_name
 volume = proj + "_common"
 
 
