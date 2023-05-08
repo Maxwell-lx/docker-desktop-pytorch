@@ -1,46 +1,18 @@
-# docker-desktop-pytorch
-一个带有桌面VNC的深度学习docker镜像。
+# 基于
 
-基于项目[x11vnc/docker-desktop](https://hub.docker.com/r/x11vnc/docker-desktop/tags)
+[x11vnc/docker-desktop:zh_CN](https://hub.docker.com/r/x11vnc/docker-desktop)原版镜像
 
-# 要求
+# Host配置
 
 - docker
 - nvidia-docker2
-- 宿主机已安装显卡驱动
-
-# 改动
-
-### 修改调用显卡方法
-
-- 删除“-N”，原版显卡启用方式（适用于Singularity）
-- 添加”—gpus all”参数来启用Nvidia GPU（适用于Nvidia-docker2）
-
-### 命令调整
-
-- 删除”—rm”，容器关闭后不会被删除
-- 删除“—detch”，原为后台运行，现在container不会自动删除，所以这条指令也就没必要了
-- 默认密码设置为：123。方便本地使用，取消了原版的随机密码
-- 添加“—gpus all“，为了深度学习用。（需要安装nvidia-docker2）
-- 默认容器名：当前x11vnc_desktop.py所处的路径
-
-## 镜像调整
-
-### 添加软件
-
-- 添加gnome-terminal
-- 添加gedit
-- 添加Nautilus（文件管理器）
-- 添加pycharm（社区版2022.3）
-- 添加miniconda
-- 添加conda环境，已安装（torch、numpy等常用算法包）
-- pycharm已配置PIP清华镜像源
+- host已安装显卡驱
 
 # 使用方法
 
-1. 准备文件，比如/home/$USER/docker_containers/路径中，新建common和Project-X（项目名）
+1. 准备文件夹
     
-    common和Porject-X是两个数据卷，功能上完全一致；用法上，common是一个共享数据卷，多个项目的共享空间，Porject-X项目专用的数据卷。
+    common和Porject-X是两个数据卷，功能上完全一致；用法上，common是一个共享数据卷，多个项目的共享空间，可以用来放置数据集、公共代码等，Porject-X项目专用的数据卷，存放项目代码等。
     
 
 ```bash
@@ -55,13 +27,33 @@ docker_containers
 ...
 ```
 
-2. 运行。注意，使用此脚本创建多个container，必须保持其他的container为开启状态，否则端口将会被占用
+1. 创建container。注意，使用此脚本创建多个container，如果多个container共存，必须保持要共存的container为开启状态，否则端口将会被占用
+    
+    修改PROJECT_NAME="project-1"
+    
 
 ```bash
-cd /home/$USER/docker_containers/Project-1
-curl -s -O https://raw.githubusercontent.com/Maxwell-lx/docker-desktop-pytorch/main/x11vnc_desktop.py
-python x11vnc_desktop.py -o maxwelllx -i /docker-desktop-pytorch -v /home/$USER/docker-containers/common -V -p
+cd /home/$USER/docker_containers
+PROJECT_NAME="project-1"
+git clone https://github.com/Maxwell-lx/docker-desktop-pytorch.git "$PROJECT_NAME"
+cd "$PROJECT_NAME"
+python3 x11vnc_desktop.py -v "/home/$USER/docker-containers/common" -V -p
 ```
+
+1. 一键配置环境。在打开的默认终端中
+
+```bash
+bash
+bash init.sh <-pycharm> [2023.1.1] <-python> [3.10] <torch> [1.13.1]   
+# 或 
+# bash init.sh
+```
+
+init.sh可选参数
+
+- <-pycharm> [2023.1.1]，到官网选择版本[Download PyCharm: Python IDE for Professional Developers by JetBrains](https://www.jetbrains.com/pycharm/download/#section=linux)
+- <-python> [3.10]，python版本，默认3.10
+- <torch> [1.13.1]，torch版本，默认1.13.1
 
 ## 参数解析
 
@@ -96,15 +88,46 @@ container与host默认的端口映射
 | 6080 | 6080 | noVNC |
 | 5950 | 5900 | VNC |
 | 2222 | 22 | SSH |
-1. noVNC（火狐浏览器访问存在问题）
+1. noVNC
     
     [http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123](http://localhost:6080/vnc.html?resize=downscale&autoconnect=1&password=123)
-   
-    非本机访问，替换localhost为目标ip,替换密码
     
+    非本机访问，替换localhost为目标ip，替换密码
     
 2. VNC软件，推荐TigerVNC
     
     端口5950
     
 3. SSH详见“-V”模式输出信息
+
+## 宿主机路径-数据卷
+
+| host | container | 数据卷说明 |
+| --- | --- | --- |
+| /home/$USER/docker-containers/common | /home/ubuntu/common | 多容器共享 |
+| /home/$USER/.ssh | /home/ubuntu/.ssh | ssh配置 |
+| /home/$USER/docker-containers/Project-1 | /home/ubuntu/Project-1 | 项目独享 |
+| x11vnc_zh_CN_config | /home/ubuntu/.config | 镜像配置 |
+| /home/$USER/.gnupg | /home/ubuntu/.gnupg | 系统配置 |
+
+# 改动
+
+### 修改调用显卡方法
+
+- 删除“-N”，原版显卡启用方式（适用于Singularity）
+- 添加”—gpus all”参数来启用Nvidia GPU（适用于Nvidia-docker2）
+
+### 命令调整
+
+- 删除”—rm”，容器关闭后不会被删除
+- 删除“—detch”，原为后台运行，现在container不会自动删除，所以这条指令也就没必要了
+- 默认密码设置为：123。方便本地使用，取消了原版的随机密码
+- 添加“—gpus all“，为了深度学习用。（需要安装nvidia-docker2）
+- 默认容器名：当前x11vnc_desktop.py所处的路径
+
+### 添加软件
+
+- 添加cmake、wget、gnome-terminal（终端）、gedit（文本编辑器）、Nautilus（文件管理器）
+- 添加pycharm（社区版2022.3）
+- 添加miniconda
+- 添加conda环境，已安装（torch、numpy等常用算法包）
